@@ -1,0 +1,26 @@
+{% extends 'kalorienRechner/base.html' %}
+
+{% block content %}
+    {% for meal in meals %}
+    <article class="post">
+        <h2><a href="{% url 'meal_detail' pk=meal.pk %}">{{ meal.name }}</a></h2>
+        <time class="date">
+            {{ meal.consumed_date }}
+        </time>
+        <p>{{ meal.calorie_count|linebreaksbr }} kcal</p>
+    </article>
+    {% endfor %}
+    <form method="POST" class="date-form" action="history/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <h3>Check Meal history</h3>
+        <input type="date" id="date" name="date" class="today">
+        <script>
+            let today = new Date().toISOString().substr(0, 10);
+            document.querySelector(".today").value = today;
+        </script>            
+        <button type="submit">Check day</button>
+        <button action="/kalorienRechner/history">Check all</button>
+    </form>
+    <br><br><br><br><br>
+{% endblock %}

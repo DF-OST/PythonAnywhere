@@ -1,0 +1,15 @@
+{% extends 'kamelRechner/base.html' %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamel Rechner</title>
+</head>
+{% block content %}
+  <h1>Berechne deinen Wert in Kamelen</h1>
+  <h2><a href="{% url 'form' gender='male' %}" class="button button-men" >Männlich</a></h2>
+  <h2><a href="{% url 'form' gender='female' %}" class="button button-women">Weiblich</a></h2>
+  <h2><a href="{% url 'ranking' %}" class="button button-women">Rangliste</a></h2>
+{% endblock %}
+</html>

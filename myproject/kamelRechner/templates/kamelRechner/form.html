@@ -1,0 +1,229 @@
+{% extends 'kamelRechner/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Form Title</title>
+    <!-- Add your CSS and other dependencies here -->
+    <link rel="stylesheet" href="path/to/your/css/file.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+{% block content %}
+    <form class="form-horizontal" method="POST" action="result/">
+        {% csrf_token %}
+        <fieldset>
+        
+        <!-- Form Name -->
+        {% if gender == 'male' %} 
+        <h1>Männlicher Rechner</h1>
+        {% endif %}
+        {% if gender == 'female' %} 
+        <h1>Weiblicher Rechner</h1>
+        {% endif %}
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Name</label>  
+          <div class="col-md-4">
+          <input id="textinput" name="name" type="text" placeholder="" class="form-control input-md" required="">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Alter</label>  
+          <div class="col-md-2">
+          <input id="textinput" name="age" type="number" placeholder="" class="form-control input-md" required="">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Grösse (cm)</label>  
+          <div class="col-md-2">
+          <input id="textinput" name="height" type="number" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">Gewicht (kg)</label>  
+          <div class="col-md-2">
+          <input id="textinput" name="weight" type="number" placeholder="" class="form-control input-md" required="">
+          </div>
+        </div>
+        
+        {% if gender == 'male' %} 
+        <!-- Multiple Radios (inline) -->
+        <img src="https://bodyboostpro.co.nz/site/file/user/5/uploads/image/male%20body%20fat-MnhY8.png" height='400' alt="Körperfettanteile Überblick">
+        <div class="form-group">
+          <br>
+          <label class="col-md-4 control-label" for="radios">Körperfett Anteil</label>
+          <div class="col-md-6">
+            <label class="radio-inline" for="radios-4">
+              <input type="radio" name="radios" id="radios-4" value="5">
+              über 30%
+            </label> &nbsp
+            <label class="radio-inline" for="radios-3">
+              <input type="radio" name="radios" id="radios-3" value="4">
+              26-29%
+            </label> &nbsp
+            <label class="radio-inline" for="radios-2">
+              <input type="radio" name="radios" id="radios-2" value="3">
+              21-25%
+            </label> &nbsp
+            <label class="radio-inline" for="radios-1">
+              <input type="radio" name="radios" id="radios-1" value="2">
+              13-20%
+            </label> &nbsp
+            <label class="radio-inline" for="radios-0">
+              <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+              unter 12%
+            </label>
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">IQ (100 = Durchschnitt)</label>  
+          <div class="col-md-2">
+          <input id="textinput" name="iq" type="number" placeholder="100" class="form-control input-md" required="">
+            
+          </div>
+        </div>
+        
+        <!-- Multiple Radios (inline) -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="hair">Haare</label>
+          <div class="col-md-4">
+            {% if gender == 'male' %} 
+            <label class="radio-inline" for="radios-0">
+              <input type="radio" name="hair" id="radios-0" value="1" checked="checked">
+              Normal
+            </label> &nbsp
+            <label class="radio-inline" for="radios-1">
+              <input type="radio" name="hair" id="radios-1" value="2">
+              Geheimratsecken
+            </label> &nbsp
+            <label class="radio-inline" for="radios-2">
+              <input type="radio" name="hair" id="radios-2" value="3">
+              Keine Haare
+            </label>
+            {% endif %}
+            {% if gender == 'female' %} 
+            <label class="radio-inline" for="radios-0">
+              <input type="radio" name="hair" id="radios-0" value="1" checked="checked">
+              Lang
+            </label>&nbsp
+            <label class="radio-inline" for="radios-1">
+              <input type="radio" name="hair" id="radios-1" value="2">
+              Kurz
+            </label>&nbsp
+            <label class="radio-inline" for="radios-2">
+              <input type="radio" name="hair" id="radios-2" value="3">
+              Keine Haare
+            </label>&nbsp
+          </div>
+
+          <!-- Multiple Radios (inline) -->
+          <br>
+          <img src="https://images.everydayhealth.com/images/diet-nutrition/body-type-diet-101-the-ultimate-guide-alt-722x406.jpg" alt="Körpertypen Überblick">
+          <div class="form-group">
+            <br>
+            <label class="col-md-4 control-label" for="radios">Körpertyp</label>
+              <div class=""> 
+                <label class="radio-inline" for="radios-0">
+                  <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                  Ectomorph
+                </label>&nbsp &nbsp
+                <label class="radio-inline" for="radios-1">
+                  <input type="radio" name="radios" id="radios-1" value="2">
+                  Ecto- zu Mesomorph
+                </label> &nbsp &nbsp
+                <label class="radio-inline" for="radios-2">
+                  <input type="radio" name="radios" id="radios-2" value="3">
+                  Mesomorph
+                </label> &nbsp &nbsp
+                <label class="radio-inline" for="radios-3">
+                  <input type="radio" name="radios" id="radios-3" value="4">
+                  Meso- zu Endomorph
+                </label> &nbsp &nbsp
+                <label class="radio-inline" for="radios-4">
+                  <input type="radio" name="radios" id="radios-4" value="5">
+                  Endomorph
+                </label>
+              </div>
+            </div>
+        {% endif %}
+        </div>
+    
+    
+        
+        
+        {% if gender == 'male' %}
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="beard">Bart</label>
+          <div class="col-md-4">
+            <label class="checkbox-inline" for="checkboxes-0">
+              <input type="checkbox" name="beard" id="checkboxes-0" value="1">
+              Ja
+            </label>
+          </div>
+        </div>
+        {% endif %}
+
+        {% if gender == 'female' %}
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="form-group">
+          <label class="col-sm-6 control-label" for="jewlery">Schmuck</label>
+          <div class="col-sm-6">
+            <label class="checkbox-inline" for="checkboxes-0">
+              <input type="checkbox" name="jewlery1" id="checkboxes-0" value="1">
+              Ohrringe
+            </label>&nbsp &nbsp
+            <label class="checkbox-inline" for="checkboxes-1">
+              <input type="checkbox" name="jewlery2" id="checkboxes-1" value="1">
+              Halskette
+            </label>&nbsp &nbsp
+            <label class="checkbox-inline" for="checkboxes-2">
+              <input type="checkbox" name="jewlery3" id="checkboxes-2" value="1">
+              Nasenpiercing
+            </label>&nbsp &nbsp
+            <label class="checkbox-inline" for="checkboxes-3">
+              <input type="checkbox" name="jewlery4" id="checkboxes-3" value="1">
+              Uhr
+            </label>&nbsp &nbsp
+            <label class="checkbox-inline" for="checkboxes-4">
+              <input type="checkbox" name="jewlery5" id="checkboxes-4" value="1">
+              Ring
+            </label>&nbsp &nbsp
+            <label class="checkbox-inline" for="checkboxes-5">
+              <input type="checkbox" name="jewlery6" id="checkboxes-5" value="1">
+              Bauchnabelpiercing
+            </label>&nbsp &nbsp
+          </div>
+        </div>
+        {% endif %}
+        
+        <!-- Button -->
+        <div class="form-group">
+          <div class="col-md-4">
+            <button id="singlebutton" name="singlebutton" class="btn btn-primary" type"submit" style="background-color: #C19A6B; border-color: #C19A6B;">Berechne</button>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+{% endblock %}
+</html>

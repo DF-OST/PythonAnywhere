@@ -1,0 +1,13 @@
+{% extends 'bussenRechner/base.html' %}
+{% block content %}
+<h3>Vor Toleranzabzug:</h3>
+<p>Überschreitung von {{ueberschreitungVorToleranz}} kmh {{ueberschreitungsBereichVorToleranz}}</p>
+<p>Busse: {{busseVorToleranz}}{% if busseVorToleranz >= 400%}+{% endif %} CHF</p>
+<p>Rechtsfolge: {{massnahmeVorToleranz}}</p>
+<br>
+<h3>Nach Toleranzabzug ({{toleranz}} kmh Toleranz bei {{messverfahren}} und Messgeschwindigkeit von {{tatsaechlicheGeschwindigkeit}} kmh):</h3>
+<p>Überschreitung von {{ueberschreitungNachToleranz}} kmh {{ueberschreitungsBereichNachToleranz}}</p>
+<p>Busse: {{busseNachToleranz}}{% if busseNachToleranz >= 400%}+{% endif %} CHF</p>
+<p>Rechtsfolge: {{massnahmeNachToleranz}}</p>
+<p>* Die Berrechnungen beziehen sich auf die Angaben des <a href="https://www.ch.ch/de/fahrzeuge-und-verkehr/verhalten-im-strassenverkehr/verkehrsregeln/verkehrsregeln-und-ordnungsbussen/" target="_blank">Schweizerischen Bundes</a> und sind ohne Gewähr.</p>
+    {% endblock %}

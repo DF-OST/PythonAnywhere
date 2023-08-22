@@ -1,0 +1,18 @@
+{% extends 'kalorienRechner/base.html' %}
+
+{% block content %}
+    <article class="post">
+        <aside class="actions">
+            {% if user.is_authenticated %}
+            <time class="date">
+                {{ meal.consumed_date }}
+            </time>
+                <a class="btn btn-secondary" href="{% url 'meal_edit' pk=meal.pk %}">
+                    {% include './icons/pencil-fill.svg' %}
+                </a>
+            {% endif %}
+        </aside>
+        <h2>{{ meal.name }}</h2>
+        <p>Calories: {{ meal.calorie_count |linebreaksbr }}</p>
+    </article>
+{% endblock %}

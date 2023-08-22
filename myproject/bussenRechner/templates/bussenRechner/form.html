@@ -1,0 +1,41 @@
+{% extends 'bussenRechner/base.html' %}
+{% block content %}
+    <form action="result/" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="bereich" value="Innerorts" checked><label class="form-check-label">Innerorts</label>
+          </div>
+      
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="bereich" value="Ausserorts"> <label class="form-check-label">Ausserorts</label>
+          </div>
+      
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="bereich" value="Autobahn"> <label class="form-check-label">Autobahn</label>
+          </div>
+        </div>
+      
+        <div class="form-group">
+          <label>Erlaubte Geschwindigkeit *</label> <input type="number" class="form-control" name="erlaubteGeschwindigkeit" placeholder="" required="required">
+        </div>
+      
+        <div class="form-group">
+          <label>tatsächliche Geschwindigkeit *</label> <input type="number" class="form-control" name="tatsaechlicheGeschwindigkeit" placeholder="" required="required">
+        </div>
+      
+        <div class="form-group">
+          <label>Messverfahren</label>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="messverfahren" value="Lasermessung" checked> <label class="form-check-label">lasermessung (Standard)</label>
+          </div>
+      
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="messverfahren" value="Radarmessung"> <label class="form-check-label">radarmessung</label>
+          </div>
+
+        </div><small>Felder markiert mit * sind Pflichtfelder.</small>
+        <br><input type="submit">
+      </form>
+{% endblock %}
