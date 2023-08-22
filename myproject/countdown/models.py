@@ -13,3 +13,6 @@ class Event(models.Model):
 
     def get_absolute_url(self):
         return reverse('events:event-detail', kwargs={'pk': self.pk})
+    
+    def get_date(self):
+        return reverse({'date': self.when})

@@ -11,3 +11,7 @@ class EventListView(ListView):
 class EventDetailView(DetailView):
     model = Event
     template_name = 'countdown/countdown.html'
+
+def list(request):
+    events = Event.objects.order_by('when')
+    return render(request, 'countdown/main.html', {'object_list': events})

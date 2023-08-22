@@ -1,12 +1,39 @@
-console.log('hello world')
-
 const eventBox = document.getElementById('event-box')
-console.log(eventBox.textContent)
 const countdownBox = document.getElementById('countdown-box')
 
-console.log(eventBox.textContent)
-const eventDate = Date.parse(eventBox.textContent)
-console.log(eventDate)
+// const eventDate = Date.parse(eventBox.textContent)
+
+var dateString = eventBox.textContent;
+console.log('String:')
+
+// Split the string to extract date and time parts
+var parts = dateString.split(" um ");
+var datePart = parts[0];
+var timePart = parts[1];
+
+// Split the date part to extract day, month, and year
+var dateComponents = datePart.split(" ");
+var day = parseInt(dateComponents[0], 10);
+var month = dateComponents[1]; // Month name
+var year = parseInt(dateComponents[2], 10);
+
+// Convert month name to a numerical month value (0-indexed)
+var monthNames = [
+
+  "Januar", "Februar", "März", "April", "Mai", "Juni",
+
+  "Juli", "August", "September", "Oktober", "November", "Dezember"
+
+];
+var monthIndex = monthNames.indexOf(month);
+
+// Split the time part to extract hours and minutes
+var timeComponents = timePart.split(":");
+var hours = parseInt(timeComponents[0], 10);
+var minutes = parseInt(timeComponents[1], 10); 
+
+// Create a new Date object with the extracted components
+var eventDate = new Date(year, monthIndex, day, hours, minutes);
 
 setInterval(()=> {
     const now = new Date().getTime()
@@ -24,4 +51,3 @@ setInterval(()=> {
 
     }
 }, 1000)
-

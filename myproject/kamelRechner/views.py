@@ -19,10 +19,28 @@ def result(request, gender):
     beard = int(request.POST.get('beard', 0))
     age = int(request.POST['age'])
     jewlery = 0
+    jewleryString = ''
 
     for i in range(1,7):
         jewlery += int(request.POST.get("jewlery" + str(i), 0))
-
+        if int(request.POST.get("jewlery" + str(i), 0)) == 1:
+            if i == 1:
+                jewleryString += "Ohrringe, "
+            elif i == 2:
+                jewleryString += "Halskette, "
+            elif i == 3:
+                jewleryString += "Nasenpiercing, "
+            elif i == 4:
+                jewleryString += "Uhr, "
+            elif i == 5:
+                jewleryString += "Ring, "
+            elif i == 6:
+                jewleryString += "Bauchnabelpiercing, "
+        
+    if jewlery == 0:
+        jewleryString += 'keinen Schmuck'
+    else:
+        jewleryString = jewleryString[:-2]
 
     punktzahl += getPzAge(age)
 
@@ -46,7 +64,7 @@ def result(request, gender):
 
     punktzahl += getPzHair(hair, gender)
 
-    person = createPerson(request.POST['name'], age, height, weight, request.POST['radios'], iq, hair, beard, jewlery, punktzahl)
+    person = createPerson(request.POST['name'], age, gender, height, weight, request.POST['radios'], iq, hair, beard, jewleryString, punktzahl)
     person.save()
 
     return render(request, 'kamelRechner/result.html', {"punktzahl": punktzahl, "name": request.POST['name']})
@@ -181,29 +199,16 @@ def getPzJewlery(jewlery):
     elif jewlery == 3:
         return 3
     
-def createPerson(name, age, height, weight, body, iq, hair, beard, jewlery, camelValue):
+def createPerson(name, age, gender, height, weight, body, iq, hair, beard, jewlery, camelValue):
     # created = Subject.objects.get_or_create(name="A new subject")
     if Person.objects.filter(name=name).exists():
         person = Person.objects.get(name=name)
-        """
-        person.__setattr__(camelValue = camelValue,
-                    age = age,
-                    height = height,
-                    weight = weight,
-                    body = body,
-                    iq = iq,
-                    hair = hair,
-                    beard = beard,
-                    jewlery = jewlery)
-        """
+
         person.camelValue = camelValue
         person.age = age
         person.height = height
         person.weight = weight
-        person.body = body
         person.iq = iq
-        person.hair = hair
-        person.beard = beard
         person.jewlery = jewlery
 
     else:
@@ -217,4 +222,50 @@ def createPerson(name, age, height, weight, body, iq, hair, beard, jewlery, came
                         hair = hair,
                         beard = beard,
                         jewlery = jewlery)
+        
+    if gender == 'male':
+        if body == '5':
+            person.body = "über 30% Körperfett"
+        elif body == '4':
+            person.body = "26-29% Körperfett"
+        elif body == '3':
+            person.body = "21-25% Körperfett"
+        elif body == '2':
+            person.body = "13-20% Körperfett"
+        elif body == '1':
+            person.body = "unter 12% Körperfett"
+
+        if hair == 1:
+            person.hair = "Normal"
+        elif hair == 2:
+            person.hair = "Geheimratsecken"
+        elif hair == 3:
+            person.hair = "Keine Haare"
+
+        if beard == 0:
+            person.beard = 'keinen Bart'
+        elif beard == 1:
+            person.beard = 'hat einen Bart'
+
+    elif gender == 'female':
+        if body == '1':
+            person.body = "Ectomorph"
+        elif body == '2':
+            person.body = "Ecto- zu Mesomorph"
+        elif body == '3':
+            person.body = "Mesomorph"
+        elif body == '4':
+            person.body = "Meso- zu Endomorph"
+        elif body == '5':
+            person.body = "Endomorph"
+
+        if hair == 1:
+            person.hair = "Lang"
+        elif hair == 2:
+            person.hair = "Kurz"
+        elif hair == 3:
+            person.hair = "Keine Haare"
+
+        person.beard = 'keinen Bart'
+
     return person

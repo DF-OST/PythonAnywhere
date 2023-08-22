@@ -7,14 +7,9 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-4">
-            <div>{{object.name}} will take Place in:</div>
-        </div>
-        <div class="col-8">
-            <div id="event-box">{{object.when|date:"Y-m-d H:i:s"}}</div>
-        </div>
+        <div id="event-box" class="text-center mt-3 h1"><h1>{{object.when |date:"d F Y"}} um {{object.when | date:"H:i"}} Uhr</h1></div>
     </div>
-    <div>Time left:</div>
+    <div class="text-center mt-3 h1"><h2>verbleibende Zeit:</h2></div>
     <div id="countdown-box" class="text-center mt-3 h1">
         <div class="spinner-border" role="status"></div>
     </div>

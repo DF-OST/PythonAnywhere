@@ -1,9 +1,13 @@
 {% extends 'countdown/base.html' %}
 {% load static %}
 {% block content %}
+<h1>Alle Ereignisse:</h1>
     {% for obj in object_list %}
     <div>
-        <a href={{obj.get_absolute_url}}>{{obj.name}}</a>
+        <h2>
+            <a href={{obj.get_absolute_url}} style="color: black;">{{obj.name}}</a>
+        </h2>
+        <p>Findet statt am: {{obj.when |date:"d. F Y"}} um {{obj.when | date:"H:i"}} Uhr</p>
     </div>
     {% endfor %}
 {% endblock content %}

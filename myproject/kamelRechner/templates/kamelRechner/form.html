@@ -61,26 +61,26 @@
         <img src="https://bodyboostpro.co.nz/site/file/user/5/uploads/image/male%20body%20fat-MnhY8.png" height='400' alt="Körperfettanteile Überblick">
         <div class="form-group">
           <br>
-          <label class="col-md-4 control-label" for="radios">Körperfett Anteil</label>
+          <label class="col-md-4 control-label" for="bpf">Körperfett Anteil</label>
           <div class="col-md-6">
-            <label class="radio-inline" for="radios-4">
-              <input type="radio" name="radios" id="radios-4" value="5">
+            <label class="radio-inline" for="bpf-1">
+              <input type="radio" name="radios" id="bpf-1" value="5" checked="checked">
               über 30%
             </label> &nbsp
-            <label class="radio-inline" for="radios-3">
-              <input type="radio" name="radios" id="radios-3" value="4">
+            <label class="radio-inline" for="bpf-2">
+              <input type="radio" name="radios" id="bpf-2" value="4">
               26-29%
             </label> &nbsp
-            <label class="radio-inline" for="radios-2">
-              <input type="radio" name="radios" id="radios-2" value="3">
+            <label class="radio-inline" for="bpf-3">
+              <input type="radio" name="radios" id="bpf-3" value="3">
               21-25%
             </label> &nbsp
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="radios" id="radios-1" value="2">
+            <label class="radio-inline" for="bpf-4">
+              <input type="radio" name="radios" id="bpf-4" value="2">
               13-20%
             </label> &nbsp
-            <label class="radio-inline" for="radios-0">
-              <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+            <label class="radio-inline" for="bpf-5">
+              <input type="radio" name="radios" id="bpf-5" value="1">
               unter 12%
             </label>
           </div>
@@ -101,68 +101,67 @@
           <label class="col-md-4 control-label" for="hair">Haare</label>
           <div class="col-md-4">
             {% if gender == 'male' %} 
-            <label class="radio-inline" for="radios-0">
-              <input type="radio" name="hair" id="radios-0" value="1" checked="checked">
+            <label class="radio-inline" for="hair-1">
+              <input type="radio" name="hair" id="hair-1" value="1" checked="checked">
               Normal
             </label> &nbsp
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="hair" id="radios-1" value="2">
+            <label class="radio-inline" for="hair-2">
+              <input type="radio" name="hair" id="hair-2" value="2">
               Geheimratsecken
             </label> &nbsp
-            <label class="radio-inline" for="radios-2">
-              <input type="radio" name="hair" id="radios-2" value="3">
+            <label class="radio-inline" for="hair-3">
+              <input type="radio" name="hair" id="hair-3" value="3">
               Keine Haare
             </label>
             {% endif %}
             {% if gender == 'female' %} 
-            <label class="radio-inline" for="radios-0">
-              <input type="radio" name="hair" id="radios-0" value="1" checked="checked">
+            <label class="radio-inline" for="hair-4">
+              <input type="radio" name="hair" id="hair-4" value="1" checked="checked">
               Lang
             </label>&nbsp
-            <label class="radio-inline" for="radios-1">
-              <input type="radio" name="hair" id="radios-1" value="2">
+            <label class="radio-inline" for="hair-5">
+              <input type="radio" name="hair" id="hair-5" value="2">
               Kurz
             </label>&nbsp
-            <label class="radio-inline" for="radios-2">
-              <input type="radio" name="hair" id="radios-2" value="3">
+            <label class="radio-inline" for="hair-6">
+              <input type="radio" name="hair" id="hair-6" value="3">
               Keine Haare
             </label>&nbsp
           </div>
+        </div>
 
+        <div class="form-group">
           <!-- Multiple Radios (inline) -->
           <br>
           <img src="https://images.everydayhealth.com/images/diet-nutrition/body-type-diet-101-the-ultimate-guide-alt-722x406.jpg" alt="Körpertypen Überblick">
           <div class="form-group">
             <br>
-            <label class="col-md-4 control-label" for="radios">Körpertyp</label>
+            <label class="col-md-4 control-label" for="bt">Körpertyp</label>
               <div class=""> 
-                <label class="radio-inline" for="radios-0">
-                  <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                <label class="radio-inline" for="bt-1">
+                  <input type="radio" name="radios" id="bt-1" value="1" checked="checked">
                   Ectomorph
                 </label>&nbsp &nbsp
-                <label class="radio-inline" for="radios-1">
-                  <input type="radio" name="radios" id="radios-1" value="2">
+                <label class="radio-inline" for="bt-2">
+                  <input type="radio" name="radios" id="bt-2" value="2">
                   Ecto- zu Mesomorph
                 </label> &nbsp &nbsp
-                <label class="radio-inline" for="radios-2">
-                  <input type="radio" name="radios" id="radios-2" value="3">
+                <label class="radio-inline" for="bt-3">
+                  <input type="radio" name="radios" id="bt-3" value="3">
                   Mesomorph
                 </label> &nbsp &nbsp
-                <label class="radio-inline" for="radios-3">
-                  <input type="radio" name="radios" id="radios-3" value="4">
+                <label class="radio-inline" for="bt-4">
+                  <input type="radio" name="radios" id="bt-4" value="4">
                   Meso- zu Endomorph
                 </label> &nbsp &nbsp
-                <label class="radio-inline" for="radios-4">
-                  <input type="radio" name="radios" id="radios-4" value="5">
+                <label class="radio-inline" for="bt-5">
+                  <input type="radio" name="radios" id="bt-5" value="5">
                   Endomorph
                 </label>
               </div>
             </div>
-        {% endif %}
         </div>
-    
-    
-        
+        {% endif %}
         
         {% if gender == 'male' %}
         <!-- Multiple Checkboxes (inline) -->
